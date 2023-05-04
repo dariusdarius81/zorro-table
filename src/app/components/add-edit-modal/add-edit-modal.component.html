@@ -1,0 +1,51 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitForm(formGroup.value)">
+  <div class="form-container">
+    <nz-row>
+      <nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="name" name="name" required />
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+    </nz-row>
+    <nz-row>
+      <nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>Age</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="age" name="age" required />
+            <div *ngIf="formGroup.get('age')?.errors?.['required']" nz-form-explain>Age is required</div>
+            <div *ngIf="formGroup.get('age')?.errors?.['ageRange']" nz-form-explain>Age must be between 18 and 100</div>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+    </nz-row>
+    <nz-row>
+      <nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>Address</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="address" name="address" required />
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+    </nz-row>
+    <nz-row>
+      <nz-col nzSpan="24" class="text-right">
+        <nz-form-item>
+          <button
+            nz-button
+            nzType="primary"
+            type="submit"
+            [disabled]="!formGroup.valid"
+          >
+            Save
+          </button>
+          <button nz-button class="ml-3" (click)="closeModal()">Cancel</button>
+        </nz-form-item>
+      </nz-col>
+    </nz-row>
+  </div>
+</form>

@@ -1,4 +1,3 @@
-// src/app/validators/age.validator.ts
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export function ageValidator(min: number, max: number): ValidatorFn {
